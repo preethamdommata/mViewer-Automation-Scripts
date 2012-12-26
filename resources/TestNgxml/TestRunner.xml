@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="mViewerScripts" verbose="1" >
+  <parameter name="collectionName"  value="collection1"/>
+  <parameter name="CappedcollectionName"  value="collection3"/>
+  <parameter name="queryCommand"  value="db.ss.insert({num: 10});"/>
+  <parameter name="queryCommandofAnotherCollection"  value="db.coll.insert({num: 10});"/>
+  <parameter name="otherCollectionName"  value="coll"/>
+  <parameter name="newDBName"  value="DataBase1"/>
+  <test name="mViewerTesting with Firefox" thread-count="2" preserve-order="true">
+  <parameter name = "Browser" value = "firefox"/>
+    <classes>
+   <class name="org.imaginea.mviewer.tests.LoginTest"/>
+
+    </classes>
+  </test>
+</suite>

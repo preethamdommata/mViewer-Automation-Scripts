@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<project name="TestNG" default="run" basedir=".">
+
+<property name="srcdir" value="src"/>
+<property name="builddir" value="build"/>
+<property name="classesdir" value = "${builddir}/classes"/>
+<property name="outputdir" value = "output"/>
+
+<path id="libs">
+<fileset dir="lib">
+<include name="*.jar"/>
+</fileset>
+<pathelement location="${classesdir}"/>
+</path>
+
+  <target name="clean">
+  <delete dir = "${builddir}"/>
+  <delete dir = "${classesdir}"/>
+  <delete dir = "${outputdir}"/>
+  </target>
+
+  <target name="prepare" depends="clean">
+  <mkdir dir="${builddir}"/>
+  <mkdir dir="${classesdir}"/>
+  <mkdir dir="${outputdir}"/>
+  </target>
+
+  <target name="compile" depends="prepare">
+  <javac includeantruntime="false" srcdir="${srcdir}" destdir="${classesdir}" classpathref="libs"/>  
+  </target>
+
+  <target name="run" depends="compile" description="running tests">
+  <echo> running tests...</echo>
+  <taskdef name="testng" classname="org.testng.TestNGAntTask" classpathref="libs"/>
+  <testng outputdir="${outputdir}" classpathref="libs"> 
+  <xmlfileset dir="resources/TestNgxml" includes="TestRunner.xml"/>
+  </testng>
+  </target>
+  
+<target name="main" depends="run">	
+<echo message="main target finished.."/>
+</target>
+
+
+</project>
