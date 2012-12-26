@@ -1,0 +1,11 @@
+#Build and Bin Folders
+
+bin/
+build/
+
+#other files and folders
+.settings/
+
+#Output folders
+output/
+test-output/
